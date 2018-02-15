@@ -1,2 +1,5 @@
 FROM circleci/python:3.6.1
-RUN pip install -u pipenv tox pylint flake8 pytest pytest-cov pytest-pylint pyflakes
+ADD Pipfile .
+ADD Pipfile.lock .
+RUN sudo pip install -U pipenv
+RUN sudo pipenv install --python 3.6.1 --system --dev --ignore-pipfile 
